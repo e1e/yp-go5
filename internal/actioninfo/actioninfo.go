@@ -1,6 +1,8 @@
 package actioninfo
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // создайте интерфейс DataParser
 type DataParser interface {

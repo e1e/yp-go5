@@ -30,7 +30,12 @@ func (ds *DaySteps) Parse(datastring string) (err error) {
 
 	steps, err := strconv.Atoi(sData[0])
 	if err != nil {
-		return
+		/*
+			Разве метод возвращает не именованное значение?
+			Т.е при просто return не вернется значение переменной err?
+		*/
+		//return
+		return fmt.Errorf("conversion error: %w", err)
 	}
 	if steps <= 0 {
 		return fmt.Errorf("count steps %d < 0", steps)
@@ -39,7 +44,7 @@ func (ds *DaySteps) Parse(datastring string) (err error) {
 
 	duration, err := time.ParseDuration(sData[1])
 	if err != nil {
-		return
+		return fmt.Errorf("conversion error: %w", err)
 	}
 	ds.Duration = duration
 
